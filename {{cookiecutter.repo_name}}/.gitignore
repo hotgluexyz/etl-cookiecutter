@@ -7,8 +7,8 @@ __pycache__/
 venv/
 *.egg-info/
 
-# sync-output/
-# etl-output/
-# snapshots/
+sync-output/
+etl-output/
+snapshots/
 catalog/
 catalog.json

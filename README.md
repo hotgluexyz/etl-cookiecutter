@@ -6,7 +6,7 @@ Cookiecutter template for [hotglue](https://hotglue.xyz) Python ETL transformati
 
 ```bash
 pip install cookiecutter
-cookiecutter /path/to/etl-cookiecutter
+cookiecutter https://github.com/hotgluexyz/etl-cookiecutter
 ```
 
 You will be prompted for:
