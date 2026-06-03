@@ -1,0 +1,14 @@
+{
+  "repo_name": "my-etl-script",
+  "source_system": "source",
+  "target_system": "target",
+  "input_tables": "",
+  "output_tables": "",
+  "__prompts__": {
+    "repo_name": "Repository / project folder name:",
+    "source_system": "Source system name (e.g. QuickBooks, HubSpot):",
+    "target_system": "Target system name (e.g. Salesforce, data warehouse):",
+    "input_tables": "Input tables/streams from source (comma-separated):",
+    "output_tables": "Output tables/streams for target (comma-separated):"
+  }
+}

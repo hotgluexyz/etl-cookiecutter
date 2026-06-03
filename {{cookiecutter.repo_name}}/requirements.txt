@@ -1,0 +1,5 @@
+gluestick
+pandas
+pytest
+ruff
+tox
