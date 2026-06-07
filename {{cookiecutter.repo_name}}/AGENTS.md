@@ -58,8 +58,6 @@ Job env includes `TENANT`, `FLOW`, `ENV_ID`, `JOB_ID`, `JOB_ROOT`, `SYNC_TYPE`, 
 
 ```bash
 pip install -r requirements.txt
-pytest
-ruff check .
 tox
 ```
 

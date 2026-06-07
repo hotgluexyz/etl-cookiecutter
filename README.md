@@ -21,6 +21,6 @@ These are written as header comments at the top of `etl.py` (e.g. `Read tables: 
 
 - `etl.py` — hotglue entry point
 - `requirements.txt` — gluestick and pandas
-- `tox` — pytest and ruff
+- `tox` — pytest, ruff, and ty
 - `AGENTS.md` — guidance for AI agents (CLI, gluestick, local dev)
 - `.cursor/mcp.json` — [hotglue docs MCP](https://docs.hotglue.com/mcp) for Cursor
