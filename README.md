@@ -1,26 +1,45 @@
 # hotglue ETL Cookiecutter
 
-Cookiecutter template for [hotglue](https://hotglue.xyz) Python ETL transformation scripts using [gluestick](https://docs.hotglue.com/transformation/gluestick/overview) and pandas.
+## Recommended: `generate_etl.py`
 
-## Usage
+Asks only relevant questions (no duplicate read/one-way fields when bidirectional):
 
 ```bash
-pip install cookiecutter
-cookiecutter https://github.com/hotgluexyz/etl-cookiecutter
+pip install click
+python generate_etl.py
 ```
 
-You will be prompted for:
+Uses **`source_system` / `target_system`** for the one-way job or the **READ** job; **WRITE** job uses the same labels in the wizard with values stored as `write_source_system` / `write_target_system` in the template (cookiecutter needs distinct keys).
 
-- Repository name (project folder)
-- Source and target system names
-- Input tables/streams (comma-separated) and output tables/streams
+## Raw `cookiecutter` prompt order
 
-These are written as header comments at the top of `etl.py` (e.g. `Read tables: ...`, `Transform to tables: ...`).
+| Step | Field | Notes |
+|------|--------|--------|
+| 1 | `script_kind` | **basic** stops here logically (still answer later prompts with defaults or blanks) |
+| 2 | `bidirectional` | **transformation** only — separate read/write jobs |
+| 3 | `mapping_style` | `fixed_mapping` \| `widget_custom_mapping` \| `unified_schema_{accounting,crm,ecommerce}` |
+| 4 | `source_system`, `target_system`, `input_streams`, `output_streams` | One-way **or READ job** when bidirectional |
+| 5 | `write_source_system`, … | **WRITE job only** (skip if not bidirectional) |
 
-## Generated project
+**basic:** minimal `etl.py`; use `--no-input` or skip meaning in remaining prompts.
 
-- `etl.py` — hotglue entry point
-- `requirements.txt` — gluestick and pandas
-- `tox` — pytest, ruff, and ty
-- `AGENTS.md` — guidance for AI agents (CLI, gluestick, local dev)
-- `.cursor/mcp.json` — [hotglue docs MCP](https://docs.hotglue.com/mcp) for Cursor
+```bash
+cookiecutter /path/to/etl-cookiecutter --no-input \
+  repo_name=my-script script_kind=basic
+```
+
+## Mapping styles
+
+- **fixed_mapping** — `streams/<name>.py` with `mapping = {}`
+- **widget_custom_mapping** — tenant-config from UI; repo file for dev
+- **unified_schema_*** — + Pydantic models (vertical is in the choice name)
+
+Reference data works with all transformation styles (`reference_data/`).
+
+## Export
+
+Singer by default via `gs.to_export`; set `DEFAULT_EXPORT_FORMAT` to `csv` or `parquet`.
+
+## Agents
+
+Generated `AGENTS.md` points to [hotglue-skills](https://github.com/hotgluexyz/hotglue-skills) → **creating-hotglue-etl-scripts** (scaffold, archetypes, patterns).

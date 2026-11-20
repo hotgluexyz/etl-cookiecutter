@@ -1,0 +1,10 @@
+{
+  "externalId": "id",
+  "vendorName": "vendor.name",
+  "status": {
+    "lookup": {
+      "src": "active",
+      "map": { "True": "active", "False": "inactive" }
+    }
+  }
+}
