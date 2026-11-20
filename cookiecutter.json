@@ -1,14 +1,34 @@
 {
   "repo_name": "my-etl-script",
-  "source_system": "source",
-  "target_system": "target",
-  "input_tables": "",
-  "output_tables": "",
+  "script_kind": ["basic", "transformation"],
+  "bidirectional": ["no", "yes"],
+  "mapping_style": [
+    "fixed_mapping",
+    "widget_custom_mapping",
+    "unified_schema_accounting",
+    "unified_schema_crm",
+    "unified_schema_ecommerce"
+  ],
+  "source_system": "",
+  "target_system": "",
+  "input_streams": "",
+  "output_streams": "",
+  "write_source_system": "",
+  "write_target_system": "",
+  "write_input_streams": "",
+  "write_output_streams": "",
   "__prompts__": {
     "repo_name": "Repository / project folder name:",
-    "source_system": "Source system name (e.g. QuickBooks, HubSpot):",
-    "target_system": "Target system name (e.g. Salesforce, data warehouse):",
-    "input_tables": "Input tables/streams from source (comma-separated):",
-    "output_tables": "Output tables/streams for target (comma-separated):"
+    "script_kind": "Script type — basic: minimal etl.py only; transformation: mapping-driven:",
+    "bidirectional": "Separate read and write flows? (basic → no):",
+    "mapping_style": "Transformation only — fixed_mapping, widget_custom_mapping, or unified_schema_{accounting|crm|ecommerce}:",
+    "source_system": "source_system — name of the system data is read FROM (one-way job, or READ job when bidirectional):",
+    "target_system": "target_system — name of the system data is sent TO (same scope as source_system above):",
+    "input_streams": "Input stream names from source_system (comma-separated):",
+    "output_streams": "Output stream names, paired 1:1 with input_streams by position:",
+    "write_source_system": "WRITE job only — source_system (where write-job data is read from):",
+    "write_target_system": "WRITE job only — target_system (where write-job data is sent):",
+    "write_input_streams": "WRITE job — input streams (comma-separated):",
+    "write_output_streams": "WRITE job — output streams, paired 1:1 with write_input_streams:"
   }
 }

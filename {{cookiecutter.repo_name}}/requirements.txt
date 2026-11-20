@@ -1,6 +1,13 @@
-gluestick
+gluestick>=3.0.22
 pandas
 pytest
 ruff
 tox
 ty
+{% if cookiecutter.mapping_style == "unified_schema_accounting" %}
+hotglue-models-accounting @ git+https://gitlab.com/hotglue/hotglue-models-accounting.git
+{% elif cookiecutter.mapping_style == "unified_schema_crm" %}
+hotglue-models-crm @ git+https://gitlab.com/hotglue/hotglue-models-crm.git
+{% elif cookiecutter.mapping_style == "unified_schema_ecommerce" %}
+hotglue-models-ecommerce @ git+https://gitlab.com/hotglue/hotglue-models-ecommerce.git
+{% endif %}
